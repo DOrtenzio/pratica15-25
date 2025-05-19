@@ -28,5 +28,22 @@ public class Main {
         System.out.println(targaProprietario); //Stampa seconda
 
         System.out.println("----------------------------------\nCome noti l'elemento con la stessa chiave con propr: \n"+precedente+"\n diventa prop: \n"+p+"----------------------------------\n");
+
+        //Controllo sovrascrittura
+        System.out.println("Inserire targa: ");
+        Targa t1=new Targa(in.nextLine().trim());
+        if (!targaProprietario.containsKey(t1)){
+            System.out.println("Inserire Nome, Cognome e Codice Fiscale");
+            Proprietario p1=new Proprietario(in.nextLine().trim(),in.nextLine().trim(),in.nextLine().trim());
+            targaProprietario.put(t1,p1);
+        }
+        System.out.println(targaProprietario); //Stampa terza
+
+        //Inverti la mappa
+        HashMap<Proprietario,Targa> proprietarioTarga =new HashMap<Proprietario,Targa>();
+        for (Targa targa: targaProprietario.keySet()){
+            proprietarioTarga.put(targaProprietario.get(targa),targa);
+        }
+        System.out.println(proprietarioTarga);
     }
 }
